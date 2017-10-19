@@ -4,7 +4,7 @@
 from urllib.request import urlopen
 import random
 
-book_test = ""
+
 
 sherlock = 'One night it was on the twentieth of March 1888 I was returning\
     which must always be associated in my mind with my wooing and with the\
@@ -20,15 +20,15 @@ sherlock = 'One night it was on the twentieth of March 1888 I was returning\
     been in part my own'
 
 
-sherlock_list = sherlock.split(' ')
-
-
 def main(url_path, num):
     """."""
+    # book_test = ""
     new_book = ""
-    book_test = urlopen(url_path)
-    print(book_test)
-    trigrams(num)
+    with open(url_path) as data:
+        sherlock = data.read()
+    sherlock_list = sherlock.split(' ')
+    # print('book_test' + book_test.decode('utf-8'))
+    trigrams(sherlock_list, num)
     for i in range(int(num)):
         new_book += " " + random.choice(list(trigram_list.keys()))
     print(new_book)
@@ -37,7 +37,7 @@ def main(url_path, num):
 trigram_list = {}
 
 
-def trigrams(r):
+def trigrams(sherlock_list, r):
     """."""
     for i in range(r):
         print(trigram_list)
