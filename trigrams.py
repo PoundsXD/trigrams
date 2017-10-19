@@ -15,6 +15,20 @@ sherlock = 'One night it was on the twentieth of March 1888 I was returning\
     been in part my own'
 
 
-def main(url_path, num_of_words):
-    
+sherlock_list = sherlock.split(' ')
 
+
+def main(url_path, num_of_words):
+    pass
+
+
+def trigrams(r):
+    trigram_list = {}
+    for i in range(r):
+        print(trigram_list)
+        trigram_list[
+            (sherlock_list[i] + ' ' + sherlock_list[i + 1])
+            ] = sherlock_list[i + 2]
+    # for i in trigram_list:
+    #     print(trigram_list[i])
+    return trigram_list
