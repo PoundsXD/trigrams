@@ -13,10 +13,10 @@ def main(url_path, num):
     with open(url_path) as data:
         sherlock = data.read()
     sherlock_list = sherlock.split(' ')
-    print(sherlock_list)
     trigrams(sherlock_list, num)
     for i in range(int(num)):
         new_book += " " + random.choice(list(trigram_list.keys()))
+    print(new_book)
     return new_book
 
 
@@ -25,7 +25,6 @@ def trigrams(sherlock_list, r):
     if r == 0:
         return 0
     for i in range(r):
-        print(trigram_list)
         trigram_list[
             (sherlock_list[i] + ' ' + sherlock_list[i + 1])
             ] = sherlock_list[i + 2]
