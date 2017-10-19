@@ -1,6 +1,11 @@
 """Trigram.py takes in a text and creates a trigram."""
 
 
+from urllib.request import urlopen
+import random
+
+book_test = ""
+
 sherlock = 'One night it was on the twentieth of March 1888 I was returning\
     which must always be associated in my mind with my wooing and with the\
     dark incidents of the Study in Scarlet I was seized with a keen desire to\
@@ -18,12 +23,22 @@ sherlock = 'One night it was on the twentieth of March 1888 I was returning\
 sherlock_list = sherlock.split(' ')
 
 
-def main(url_path, num_of_words):
-    pass
+def main(url_path, num):
+    """."""
+    new_book = ""
+    book_test = urlopen(url_path)
+    print(book_test)
+    trigrams(num)
+    for i in range(int(num)):
+        new_book += " " + random.choice(list(trigram_list.keys()))
+    print(new_book)
+
+
+trigram_list = {}
 
 
 def trigrams(r):
-    trigram_list = {}
+    """."""
     for i in range(r):
         print(trigram_list)
         trigram_list[
