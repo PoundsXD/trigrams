@@ -1,9 +1,8 @@
 """Trigram.py takes in a text and creates a trigram."""
 
 
-from urllib.request import urlopen
 import random
-
+import sys
 
 
 sherlock = 'One night it was on the twentieth of March 1888 I was returning\
@@ -21,13 +20,11 @@ sherlock = 'One night it was on the twentieth of March 1888 I was returning\
 
 
 def main(url_path, num):
-    """."""
-    # book_test = ""
+    """Open source text and create book."""
     new_book = ""
     with open(url_path) as data:
         sherlock = data.read()
     sherlock_list = sherlock.split(' ')
-    # print('book_test' + book_test.decode('utf-8'))
     trigrams(sherlock_list, num)
     for i in range(int(num)):
         new_book += " " + random.choice(list(trigram_list.keys()))
@@ -38,12 +35,17 @@ trigram_list = {}
 
 
 def trigrams(sherlock_list, r):
-    """."""
+    """Make list then use it to create dictionary."""
     for i in range(r):
         print(trigram_list)
         trigram_list[
             (sherlock_list[i] + ' ' + sherlock_list[i + 1])
             ] = sherlock_list[i + 2]
-    # for i in trigram_list:
-    #     print(trigram_list[i])
     return trigram_list
+
+
+if __name__ == '__main__':
+    # pragma: no cover
+
+    url_path, num = sys.argv[1], int(sys.argv[2])
+    main(url_path, num)
